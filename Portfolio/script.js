@@ -1,7 +1,25 @@
 // Professional Portfolio Website - Enhanced JavaScript
-// All interactive functionality with professional animations and Google Maps iframe
+// All interactive functionality with professional animations and sounds
 
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // ========== SOUND MANAGEMENT ==========
+    const clickSound = document.getElementById('clickSound');
+    const hoverSound = document.getElementById('hoverSound');
+    const successSound = document.getElementById('successSound');
+    const scrollSound = document.getElementById('scrollSound');
+    
+    // Sound utility functions
+    function playSound(sound, volume = 0.3) {
+        if (!sound) return;
+        try {
+            sound.volume = volume;
+            sound.currentTime = 0;
+            sound.play().catch(e => console.log("Sound play failed:", e));
+        } catch (e) {
+            console.log("Sound error:", e);
+        }
+    }
     
     // ========== LOADING ANIMATION ==========
     const loader = document.querySelector('.loader');
@@ -12,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
             loader.classList.add('loaded');
             // Initialize animations after loading
             initAnimations();
+            // Play subtle sound on load complete
+            playSound(successSound, 0.2);
         }, 800);
     });
     
@@ -27,104 +47,55 @@ document.addEventListener('DOMContentLoaded', function() {
         body.classList.remove('dark-theme');
     }
     
-    themeToggle.addEventListener('click', () => {
+    themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
         body.classList.toggle('dark-theme');
         
-        // Simple click effect without moving the button
-        themeToggle.style.transform = 'scale(0.95)';
+        // Play sound
+        playSound(clickSound);
+        
+        // Professional animation
+        themeToggle.style.transform = 'scale(0.9) rotate(180deg)';
         setTimeout(() => {
-            themeToggle.style.transform = 'scale(1)';
-        }, 150);
+            themeToggle.style.transform = 'scale(1) rotate(0deg)';
+        }, 300);
         
         // Save theme preference
         const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
         localStorage.setItem('theme', currentTheme);
     });
     
-    // ========== MINIMIZED HEADER ON SCROLL - FIXED ==========
+    // ========== IMPROVED HEADER SCROLL BEHAVIOR ==========
     const header = document.querySelector('.header');
     let lastScrollTop = 0;
-    let scrollTimeout;
+    let ticking = false;
     
-    function handleHeaderScroll() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    function updateHeader() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > 100) {
-            if (scrollTop > lastScrollTop) {
-                // Scrolling down - minimize header
-                header.classList.add('minimized');
-            } else {
-                // Scrolling up - show header
-                header.classList.remove('minimized');
-            }
+            header.classList.add('scrolled');
         } else {
-            // At top of page - show full header
-            header.classList.remove('minimized');
+            header.classList.remove('scrolled');
+        }
+        
+        // Hide header on scroll down, show on scroll up
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            header.classList.add('hidden');
+        } else {
+            header.classList.remove('hidden');
         }
         
         lastScrollTop = scrollTop;
-        
-        // Existing scroll effect
-        if (scrollTop > 50) {
-            header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            header.style.backdropFilter = 'blur(10px)';
-        } else {
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-            header.style.backdropFilter = 'blur(10px)';
-        }
+        ticking = false;
     }
     
-    // Throttle scroll events for better performance
     window.addEventListener('scroll', () => {
-        if (!scrollTimeout) {
-            scrollTimeout = setTimeout(() => {
-                handleHeaderScroll();
-                scrollTimeout = null;
-            }, 100);
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeader);
+            ticking = true;
         }
     });
-    
-    // ========== MINIMIZED FOOTER TOGGLE ==========
-    const footer = document.querySelector('.footer');
-    
-    // Check for saved footer state
-    const footerState = localStorage.getItem('footerMinimized');
-    if (footerState === 'true') {
-        footer.classList.add('minimized');
-    }
-    
-    // Create and add footer toggle button
-    const footerToggle = document.createElement('button');
-    footerToggle.className = 'footer-toggle';
-    footerToggle.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    footerToggle.setAttribute('aria-label', 'Toggle footer');
-    footerToggle.setAttribute('title', 'Toggle footer size');
-    
-    // Insert toggle button at the beginning of footer bottom
-    const footerBottom = document.querySelector('.footer-bottom');
-    if (footerBottom) {
-        footerBottom.insertBefore(footerToggle, footerBottom.firstChild);
-        
-        // Update toggle icon based on saved state
-        const icon = footerToggle.querySelector('i');
-        if (footerState === 'true') {
-            icon.style.transform = 'rotate(180deg)';
-        }
-        
-        // Add click event to toggle footer
-        footerToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            footer.classList.toggle('minimized');
-            
-            // Save footer state
-            const isMinimized = footer.classList.contains('minimized');
-            localStorage.setItem('footerMinimized', isMinimized);
-            
-            // Update toggle icon
-            const icon = footerToggle.querySelector('i');
-            icon.style.transform = isMinimized ? 'rotate(180deg)' : 'rotate(0deg)';
-        });
-    }
     
     // ========== GOOGLE MAPS IFRAME CONTROLS ==========
     const mapContainer = document.getElementById('mapContainer');
@@ -135,12 +106,20 @@ document.addEventListener('DOMContentLoaded', function() {
     function initMapControls() {
         // Refresh map button
         if (refreshMapBtn) {
-            refreshMapBtn.addEventListener('click', refreshMap);
+            refreshMapBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                playSound(clickSound);
+                refreshMap();
+            });
         }
         
         // Open in Google Maps button
         if (openGoogleMapsBtn) {
-            openGoogleMapsBtn.addEventListener('click', openGoogleMaps);
+            openGoogleMapsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                playSound(clickSound);
+                openGoogleMaps();
+            });
         }
     }
     
@@ -151,13 +130,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentSrc = mapContainer.src;
         mapContainer.src = currentSrc.split('?')[0] + '?v=' + new Date().getTime();
         
-        // Show feedback
+        // Show feedback with animation
         const originalHTML = refreshMapBtn.innerHTML;
         refreshMapBtn.innerHTML = '<i class="fas fa-check"></i> Refreshed';
+        refreshMapBtn.classList.add('refreshing');
         refreshMapBtn.disabled = true;
         
         setTimeout(() => {
             refreshMapBtn.innerHTML = originalHTML;
+            refreshMapBtn.classList.remove('refreshing');
             refreshMapBtn.disabled = false;
         }, 1500);
     }
@@ -168,50 +149,136 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(googleMapsUrl, '_blank', 'noopener,noreferrer');
     }
     
-    // ========== MOBILE NAVIGATION ==========
+    // ========== MOBILE NAVIGATION WITH ANIMATIONS ==========
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', (e) => {
+        e.preventDefault();
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        playSound(clickSound);
         
         // Prevent body scrolling when menu is open
         if (navMenu.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
+            // Add backdrop
+            const backdrop = document.createElement('div');
+            backdrop.className = 'nav-backdrop';
+            backdrop.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(3px);
+                z-index: 998;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
+            document.body.appendChild(backdrop);
+            setTimeout(() => backdrop.style.opacity = '1', 10);
+            
+            backdrop.addEventListener('click', closeMobileMenu);
         } else {
-            document.body.style.overflow = 'auto';
+            closeMobileMenu();
         }
     });
     
+    function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        const backdrop = document.querySelector('.nav-backdrop');
+        if (backdrop) {
+            backdrop.style.opacity = '0';
+            setTimeout(() => backdrop.remove(), 300);
+        }
+        playSound(clickSound, 0.2);
+    }
+    
     // Close mobile menu when clicking a link
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
+        link.addEventListener('click', (e) => {
+            playSound(clickSound, 0.3);
+            setTimeout(() => {
+                closeMobileMenu();
+            }, 300);
         });
     });
     
-    // ========== SMOOTH SCROLLING ==========
+    // ========== SMOOTH SCROLLING WITH SOUND ==========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                e.preventDefault();
+                
+                // Play scroll sound
+                playSound(scrollSound, 0.2);
+                
+                // Add click animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+                
+                // Smooth scroll
                 window.scrollTo({
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
                 
-                // Reset header to full size when clicking navigation
-                header.classList.remove('minimized');
+                // Reset header
+                header.classList.remove('hidden');
             }
+        });
+    });
+    
+    // ========== HOVER SOUND EFFECTS ==========
+    const interactiveElements = document.querySelectorAll('.btn, .nav-link, .filter-btn, .project-link, .social-link, .service-link');
+    
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            playSound(hoverSound, 0.1);
+        });
+        
+        element.addEventListener('click', (e) => {
+            if (element.tagName === 'A' && element.getAttribute('href').startsWith('#')) {
+                return; // Skip for smooth scrolling links
+            }
+            playSound(clickSound);
+            
+            // Add ripple effect
+            const rect = element.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.7);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                pointer-events: none;
+            `;
+            
+            element.style.position = 'relative';
+            element.style.overflow = 'hidden';
+            element.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
         });
     });
     
@@ -233,6 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         const level = entry.target.getAttribute('data-level');
                         setTimeout(() => {
                             entry.target.style.width = `${level}%`;
+                            playSound(successSound, 0.1);
                         }, 300);
                         
                         // Animate percentage counter
@@ -272,6 +340,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (current >= target) {
                 current = target;
                 clearInterval(timer);
+                // Play subtle sound when counter completes
+                playSound(successSound, 0.05);
             }
             element.textContent = Math.floor(current);
         }, 16);
@@ -316,21 +386,21 @@ document.addEventListener('DOMContentLoaded', function() {
         style.textContent = `
             @keyframes float-particle {
                 0% {
-                    transform: translateY(0) translateX(0);
+                    transform: translateY(0) translateX(0) rotate(0deg);
                     opacity: ${Math.random() * 0.3 + 0.1};
                 }
                 25% {
-                    transform: translateY(-20px) translateX(10px);
+                    transform: translateY(-20px) translateX(10px) rotate(90deg);
                 }
                 50% {
-                    transform: translateY(-40px) translateX(0);
+                    transform: translateY(-40px) translateX(0) rotate(180deg);
                     opacity: ${Math.random() * 0.5 + 0.3};
                 }
                 75% {
-                    transform: translateY(-20px) translateX(-10px);
+                    transform: translateY(-20px) translateX(-10px) rotate(270deg);
                 }
                 100% {
-                    transform: translateY(0) translateX(0);
+                    transform: translateY(0) translateX(0) rotate(360deg);
                     opacity: ${Math.random() * 0.3 + 0.1};
                 }
             }
@@ -347,22 +417,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Play sound
+            playSound(clickSound);
+            
+            // Update active button with animation
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.transform = 'scale(1)';
+            });
             button.classList.add('active');
+            button.style.transform = 'scale(1.1)';
             
             const filter = button.getAttribute('data-filter');
             
-            // Filter projects
-            projectCards.forEach(card => {
+            // Filter projects with animation
+            projectCards.forEach((card, index) => {
                 const category = card.getAttribute('data-category');
                 
                 if (filter === 'all' || category === filter) {
-                    card.style.display = 'block';
                     setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
+                        card.style.display = 'block';
+                        card.style.animation = 'slideInFromBottom 0.6s ease-out';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    }, index * 100);
                 } else {
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(20px)';
@@ -380,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = document.querySelector('.modal-close');
     const modalBody = document.querySelector('.modal-body');
     
-    // Project data - Updated with Carl's actual projects
+    // Project data
     const projects = {
         1: {
             title: "Modern E-Commerce Store",
@@ -442,6 +522,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const project = projects[projectId];
             
             if (project) {
+                // Play sound
+                playSound(clickSound);
+                
                 modalBody.innerHTML = `
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
@@ -464,13 +547,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
+                
+                // Play success sound
+                setTimeout(() => playSound(successSound, 0.2), 300);
             }
         });
     });
     
     // Close modal
     modalClose.addEventListener('click', () => {
+        playSound(clickSound, 0.3);
         modal.classList.remove('active');
         document.body.style.overflow = 'auto';
     });
@@ -478,6 +565,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal when clicking outside
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
+            playSound(clickSound, 0.2);
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
@@ -552,6 +640,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (errorElement) {
             errorElement.textContent = message;
             input.style.borderBottomColor = '#dc3545';
+            // Play error sound (using click sound for now)
+            playSound(clickSound, 0.1);
         }
     }
     
@@ -579,7 +669,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const isMessageValid = validateMessage();
         
         if (isNameValid && isEmailValid && isSubjectValid && isMessageValid) {
-            // Simulate form submission
+            // Play success sound
+            playSound(successSound);
+            
+            // Simulate form submission with animations
             const submitBtn = contactForm.querySelector('.btn-submit');
             const btnText = submitBtn.querySelector('.btn-text');
             const btnIcon = submitBtn.querySelector('.btn-icon');
@@ -588,11 +681,16 @@ document.addEventListener('DOMContentLoaded', function() {
             btnText.textContent = 'Sending...';
             btnIcon.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             submitBtn.disabled = true;
+            submitBtn.classList.add('sending');
             
             // Simulate API call
             setTimeout(() => {
-                // Show success toast
+                // Show success toast with animation
                 toast.classList.add('show');
+                
+                // Play celebration sound
+                setTimeout(() => playSound(successSound, 0.3), 100);
+                
                 setTimeout(() => {
                     toast.classList.remove('show');
                 }, 3000);
@@ -600,16 +698,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Reset form
                 contactForm.reset();
                 
-                // Reset button
-                btnText.textContent = originalText;
-                btnIcon.innerHTML = '<i class="fas fa-paper-plane"></i>';
-                submitBtn.disabled = false;
+                // Reset button with animation
+                submitBtn.classList.add('sent');
+                setTimeout(() => {
+                    btnText.textContent = originalText;
+                    btnIcon.innerHTML = '<i class="fas fa-paper-plane"></i>';
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('sending', 'sent');
+                }, 500);
                 
                 // Reset border colors
                 [nameInput, emailInput, subjectInput, messageInput].forEach(input => {
                     input.style.borderBottomColor = '';
                 });
             }, 1500);
+        } else {
+            // Play error sound
+            playSound(clickSound, 0.3);
+            
+            // Shake form for error
+            contactForm.style.animation = 'shake 0.5s ease';
+            setTimeout(() => {
+                contactForm.style.animation = '';
+            }, 500);
         }
     });
     
@@ -618,19 +729,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
-            backToTopBtn.style.opacity = '1';
-            backToTopBtn.style.visibility = 'visible';
-            backToTopBtn.style.transform = 'translateY(0)';
+            backToTopBtn.classList.add('visible');
         } else {
-            backToTopBtn.style.opacity = '0';
-            backToTopBtn.style.visibility = 'hidden';
-            backToTopBtn.style.transform = 'translateY(10px)';
+            backToTopBtn.classList.remove('visible');
         }
+    });
+    
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        playSound(scrollSound, 0.3);
+        
+        // Add bounce animation
+        backToTopBtn.style.animation = 'bounce 0.5s ease';
+        setTimeout(() => {
+            backToTopBtn.style.animation = '';
+        }, 500);
+        
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
     
     // ========== UPDATE COPYRIGHT YEAR ==========
     const currentYearSpan = document.getElementById('current-year');
-    currentYearSpan.textContent = new Date().getFullYear();
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
     
     // ========== IMAGE LOAD HANDLER ==========
     // Handle image loading and fallback
@@ -673,6 +798,45 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ========== INITIALIZE MAP CONTROLS ==========
     initMapControls();
+    
+    // ========== ADD CSS FOR ANIMATIONS ==========
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        .btn.sending {
+            background: linear-gradient(135deg, #20c997, #198754) !important;
+        }
+        
+        .btn.sent {
+            background: linear-gradient(135deg, #198754, #20c997) !important;
+        }
+        
+        .refreshing {
+            animation: pulse 1s infinite;
+        }
+        
+        .nav-backdrop {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    `;
+    document.head.appendChild(style);
     
     // ========== INITIALIZE ON LOAD ==========
     // Set initial header state
