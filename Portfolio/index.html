@@ -29,6 +29,20 @@
     <!-- Particle Background -->
     <div class="particles-container" id="particles"></div>
 
+    <!-- Audio Elements for Sounds -->
+    <audio id="clickSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hoverSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-hover-1112.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="successSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-success-bell-893.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="scrollSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-scroll-light-1001.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- Theme Toggle -->
     <button class="theme-toggle" aria-label="Toggle dark/light mode">
         <i class="fas fa-moon"></i>
@@ -685,65 +699,30 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer - Simplified -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <div class="logo-circle small">C</div>
-                        <div>
-                            <h3>Carl Niño Lloyd B. Magtibay</h3>
-                            <p>3rd Year IT Student & Developer</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
-                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Poblacion, Mabini, Batangas</p>
-                    <p><i class="fas fa-envelope"></i> 23-40304@g.batstae-u.edu.ph</p>
-                    <p><i class="fas fa-phone"></i> +63 927 482 1298</p>
-                    <p><i class="fas fa-graduation-cap"></i> 3rd Year Information Technology - BSU</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; <span id="current-year">2024</span> Carl Niño Lloyd B. Magtibay. All rights reserved. | 3rd Year Information Technology Student | Batangas State University</p>
-                <a href="#home" class="back-to-top" aria-label="Back to top">
-                    <i class="fas fa-arrow-up"></i>
-                </a>
-            </div>
+            <p>&copy; <span id="current-year">2024</span> Carl Niño Lloyd B. Magtibay. All rights reserved. | 3rd Year Information Technology Student | Batangas State University</p>
+            <a href="#home" class="back-to-top" aria-label="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </a>
         </div>
     </footer>
 
     <!-- Project Modal -->
-    <div class="modal" id="project-modal">
+    <div id="project-modal" class="modal">
         <div class="modal-content">
             <button class="modal-close" aria-label="Close modal">&times;</button>
             <div class="modal-body">
-                <!-- Content will be populated by JavaScript -->
+                <!-- Project details will be inserted here -->
             </div>
         </div>
     </div>
 
-    <!-- Success Toast -->
-    <div class="toast" id="success-toast">
-        <div class="toast-content">
-            <i class="fas fa-check-circle"></i>
-            <span class="toast-message">Message sent successfully!</span>
-        </div>
+    <!-- Toast Notification -->
+    <div id="success-toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span class="toast-message">Message sent successfully!</span>
     </div>
 
     <script src="script.js"></script>
