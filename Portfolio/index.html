@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carl Niño Lloyd B. Magtibay | 3rd Year IT Student & Web Developer</title>
+    <meta name="description" content="Carl Niño Lloyd B. Magtibay - 3rd Year Information Technology student and aspiring Web Developer skilled in HTML, CSS, JavaScript, and modern web technologies.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader">
+        <div class="loader-spinner">
+            <div class="spinner-circle"></div>
+            <div class="spinner-circle"></div>
+            <div class="spinner-circle"></div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo in header -->
+                <div class="header-logo">
+                    <span class="logo-text">Carl Niño Lloyd B. Magtibay</span>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-home"></i>Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-user"></i>About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link"><i class="fas fa-code"></i>Skills</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link"><i class="fas fa-briefcase"></i>Projects</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link"><i class="fas fa-cogs"></i>Services</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i>Contact</a></li>
+                </ul>
+                
+                <button class="hamburger" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section with Square Image -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge fade-up">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>3rd Year IT Student</span>
+                    </div>
+                    <h1 class="hero-title fade-up" data-delay="100">
+                        <span class="text-gradient">Carl Niño Lloyd B. Magtibay</span>
+                    </h1>
+                    <div class="typewriter fade-up" data-delay="200">
+                        <h2>Aspiring Web Developer & IT Student</h2>
+                    </div>
+                    <p class="hero-text fade-up" data-delay="300">I'm a 3rd-year Information Technology student passionate about creating modern, responsive web applications. Currently building my skills in full-stack development while exploring the latest web technologies and best practices.</p>
+                    <div class="hero-buttons fade-up" data-delay="400">
+                        <a href="#projects" class="btn btn-primary btn-glow">
+                            <i class="fas fa-rocket"></i>View Projects
+                        </a>
+                    </div>
+                    <div class="hero-stats fade-up" data-delay="500">
+                        <div class="stat">
+                            <h3 data-target="3">0</h3>
+                            <p>Live Projects</p>
+                        </div>
+                        <div class="stat">
+                            <h3 data-target="3">0</h3>
+                            <p>Year IT Student</p>
+                        </div>
+                        <div class="stat">
+                            <h3 data-target="100">0</h3>
+                            <p>Satisfaction Rate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-placeholder square float-animation">
+                        <div class="square-border"></div>
+                        <div class="square-border delay-1"></div>
+                        <div class="square-border delay-2"></div>
+                        <div class="profile-image-wrapper">
+                            <img src="Carl.jpg" alt="Carl Niño Lloyd B. Magtibay - IT Student & Web Developer" class="profile-img">
+                            <div class="image-overlay">
+                                <span>IT Student & Developer</span>
+                                <small>Mabini, Batangas</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section - No Image/Grid -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">About Me</div>
+                    <h2 class="section-title">My Journey as an IT Student</h2>
+                    <p class="section-subtitle">3rd Year Information Technology student passionate about web development</p>
+                </div>
+                
+                <div class="about-content no-image">
+                    <div class="about-text full-width slide-right">
+                        <div class="education-badge">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>3rd Year Information Technology</span>
+                        </div>
+                        
+                        <h3>Information Technology Student & Aspiring Developer</h3>
+                        <p>I'm currently a 3rd-year Information Technology student at Batangas State University at Mabini Campus, deeply immersed in learning both the theoretical foundations and practical applications of modern web technologies. My academic journey has equipped me with solid knowledge in software development, database management, network systems, and human-computer interaction.</p>
+                        
+                        <p>As an aspiring web developer, I focus on building clean, efficient code while staying current with industry trends. I believe in the power of continuous learning and enjoy tackling challenging projects that push my boundaries and expand my skill set. My approach combines academic knowledge with practical application through personal projects and collaborative work.</p>
+                        
+                        <div class="about-features">
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <div>
+                                    <h4>Academic Focus</h4>
+                                    <p>Web Development, Database Systems, Software Engineering, Network Fundamentals</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <h4>Technical Skills</h4>
+                                    <p>HTML5, CSS3, JavaScript, React, Node.js, Python, MongoDB, Git</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Based in Poblacion, Mabini, Batangas - A coastal town known for its beautiful diving spots</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-actions">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>Contact Me
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">My Skills</div>
+                    <h2 class="section-title">Technical Skills & Technologies</h2>
+                    <p class="section-subtitle">Skills acquired through coursework and personal projects</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-card fade-up">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <div class="skill-percentage">
+                                <span class="percentage" data-target="95">0</span>%
+                            </div>
+                        </div>
+                        <h3>Frontend Development</h3>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="95"></div>
+                        </div>
+                        <p class="skill-description">HTML5, CSS3, JavaScript, React, Vue.js, TypeScript, Bootstrap</p>
+                        <div class="skill-tags">
+                            <span>Responsive</span>
+                            <span>SPA</span>
+                            <span>PWA</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card fade-up">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="skill-percentage">
+                                <span class="percentage" data-target="85">0</span>%
+                            </div>
+                        </div>
+                        <h3>Backend Development</h3>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="85"></div>
+                        </div>
+                        <p class="skill-description">Node.js, Python, Express, MongoDB, PostgreSQL, REST APIs, Firebase</p>
+                        <div class="skill-tags">
+                            <span>API Design</span>
+                            <span>Database</span>
+                            <span>Security</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card fade-up">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="skill-percentage">
+                                <span class="percentage" data-target="90">0</span>%
+                            </div>
+                        </div>
+                        <h3>UI/UX Design</h3>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="90"></div>
+                        </div>
+                        <p class="skill-description">Figma, Adobe XD, User Research, Wireframing, Prototyping, Responsive Design</p>
+                        <div class="skill-tags">
+                            <span>User-Centered</span>
+                            <span>Prototype</span>
+                            <span>Wireframe</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card fade-up">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="skill-percentage">
+                                <span class="percentage" data-target="80">0</span>%
+                            </div>
+                        </div>
+                        <h3>Mobile Development</h3>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="80"></div>
+                        </div>
+                        <p class="skill-description">React Native, Flutter, Progressive Web Apps, iOS & Android Development</p>
+                        <div class="skill-tags">
+                            <span>Cross-Platform</span>
+                            <span>Native</span>
+                            <span>PWA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-tools">
+                    <h3>Tools & Technologies</h3>
+                    <div class="tools-grid">
+                        <div class="tool fade-up">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="tool fade-up">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="tool fade-up">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="tool fade-up">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tool fade-up">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tool fade-up">
+                            <i class="fas fa-database"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="tool fade-up">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tool fade-up">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">My Projects</div>
+                    <h2 class="section-title">Live Web Applications</h2>
+                    <p class="section-subtitle">Real-world projects I've developed and deployed</p>
+                </div>
+                
+                <div class="projects-filter fade-up">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                    <button class="filter-btn" data-filter="tourism">Tourism</button>
+                    <button class="filter-btn" data-filter="game">Games</button>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Project 1 - E-commerce -->
+                    <div class="project-card fade-up" data-category="ecommerce">
+                        <div class="project-image">
+                            <div class="image-container">
+                                <div class="project-badge">Live Project</div>
+                                <img src="why pie logo.png" alt="Modern E-Commerce Store Logo" class="project-logo">
+                            </div>
+                            <div class="project-overlay">
+                                <div class="overlay-content">
+                                    <h3>Modern E-Commerce Store</h3>
+                                    <p>Full-featured online shopping platform</p>
+                                    <button class="view-project" data-project="1">
+                                        <i class="fas fa-expand"></i>View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>Modern E-Commerce Store</h3>
+                                <div class="project-links">
+                                    <a href="https://e-commerce-1-lac.vercel.app/" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <p>A fully functional e-commerce platform with product catalog, shopping cart, and user authentication system.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JS</span>
+                                <span>JSON</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 - Tourism -->
+                    <div class="project-card fade-up" data-category="tourism">
+                        <div class="project-image">
+                            <div class="image-container">
+                                <div class="project-badge">Live Project</div>
+                                <img src="Mabini_Batangas_seal_logo.png" alt="Mabini Tourism Website Logo" class="project-logo">
+                            </div>
+                            <div class="project-overlay">
+                                <div class="overlay-content">
+                                    <h3>Mabini Tourism Website</h3>
+                                    <p>Promoting local tourism in Mabini, Batangas</p>
+                                    <button class="view-project" data-project="2">
+                                        <i class="fas fa-expand"></i>View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>Mabini Tourism Website</h3>
+                                <div class="project-links">
+                                    <a href="https://mabini-tourism-nine.vercel.app/" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <p>A tourism website showcasing the beauty of Mabini, Batangas with interactive maps, attractions, and travel information.</p>
+                            <div class="project-tags">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                                <span>Google Maps</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 - Puzzle Game -->
+                    <div class="project-card fade-up" data-category="game">
+                        <div class="project-image">
+                            <div class="image-container">
+                                <div class="project-badge">Live Project</div>
+                                <img src="Brain Storming.jpg" alt="Puzzle Game Logic" class="project-logo">
+                            </div>
+                            <div class="project-overlay">
+                                <div class="overlay-content">
+                                    <h3>Interactive Puzzle Game</h3>
+                                    <p>Fun and challenging puzzle game</p>
+                                    <button class="view-project" data-project="3">
+                                        <i class="fas fa-expand"></i>View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>Interactive Puzzle Game</h3>
+                                <div class="project-links">
+                                    <a href="https://puzzle-game-ten-tawny.vercel.app/" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <p>An engaging puzzle game with multiple difficulty levels, score tracking, timer, and responsive design for all devices.</p>
+                            <div class="project-tags">
+                                <span>JavaScript</span>
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>Game Dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="projects-cta fade-up">
+                    <p>Want to see more of my work or collaborate on a project?</p>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-handshake"></i>Let's Collaborate
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">What I Offer</div>
+                    <h2 class="section-title">Services & Capabilities</h2>
+                    <p class="section-subtitle">Services I can provide as an IT student and aspiring developer</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card fade-up">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="service-badge">01</div>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Custom website development using modern technologies learned through my IT curriculum and personal study.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i>Responsive Design</li>
+                            <li><i class="fas fa-check"></i>Modern Frameworks</li>
+                            <li><i class="fas fa-check"></i>Clean Code Practices</li>
+                        </ul>
+                        <a href="#contact" class="service-link">
+                            <span>Get Started</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="service-card fade-up">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <div class="service-badge">02</div>
+                        </div>
+                        <h3>UI/UX Design</h3>
+                        <p>User-centered design approach based on human-computer interaction principles from my IT studies.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i>User Research</li>
+                            <li><i class="fas fa-check"></i>Wireframing</li>
+                            <li><i class="fas fa-check"></i>Prototyping</li>
+                        </ul>
+                        <a href="#contact" class="service-link">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="service-card fade-up">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="service-badge">03</div>
+                        </div>
+                        <h3>Mobile Apps</h3>
+                        <p>Cross-platform mobile applications developed as part of my mobile computing coursework.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i>Cross-Platform</li>
+                            <li><i class="fas fa-check"></i>Native Features</li>
+                            <li><i class="fas fa-check"></i>App Store Ready</li>
+                        </ul>
+                        <a href="#contact" class="service-link">
+                            <span>Start Project</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="service-card fade-up">
+                        <div class="service-icon">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="service-badge">04</div>
+                        </div>
+                        <h3>Academic Tutoring</h3>
+                        <p>IT subject tutoring and programming help based on my current 3rd-year curriculum knowledge.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i>Programming Help</li>
+                            <li><i class="fas fa-check"></i>Database Concepts</li>
+                            <li><i class="fas fa-check"></i>Web Technologies</li>
+                        </ul>
+                        <a href="#contact" class="service-link">
+                            <span>Book Session</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section with Google Maps -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Contact & Location</div>
+                    <h2 class="section-title">Let's Connect & Collaborate</h2>
+                    <p class="section-subtitle">Based in Poblacion, Mabini, Batangas - Open to academic collaborations and projects</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info slide-left">
+                        <h3>Get In Touch</h3>
+                        <p>As a 3rd-year IT student, I'm eager to collaborate on projects, participate in internships, and connect with professionals in the industry. Based in the beautiful coastal town of Mabini, Batangas.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <a href="mailto:23-40304@g.batstae-u.edu.ph">23-40304@g.batstae-u.edu.ph</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <a href="tel:+639274821298">+63 927 482 1298</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Poblacion, Mabini, Batangas, Philippines</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4>Education</h4>
+                                    <p>3rd Year Information Technology - Batangas State University Mabini Campus</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="location-details">
+                            <h4><i class="fas fa-map-marked-alt"></i> About Mabini, Batangas</h4>
+                            <p>Mabini is a beautiful coastal municipality in Batangas, known for its stunning diving spots and picturesque landscapes. Located approximately 2-3 hours from Manila, Mabini is part of the CALABARZON region and is famous for its marine biodiversity and tourist destinations.</p>
+                        </div>
+                        
+                        <div class="social-section">
+                            <h4>Connect With Me</h4>
+                            <div class="social-links">
+                                <a href="https://github.com/Carl420-N" target="_blank" class="social-link" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/claudeeeeeeeeeeeee?igsh=MXBub2VoNTdnYTJpcQ==" target="_blank" class="social-link" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.facebook.com/share/17XV4xWdBz/" target="_blank" class="social-link" aria-label="Facebook">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-right">
+                        <div class="map-container slide-right">
+                            <h3><i class="fas fa-map-marked-alt"></i> My Location</h3>
+                            <div class="map-controls">
+                                <button id="refresh-map" class="btn btn-primary btn-small">
+                                    <i class="fas fa-sync-alt"></i> Refresh Map
+                                </button>
+                                <button id="open-google-maps" class="btn btn-secondary btn-small">
+                                    <i class="fas fa-external-link-alt"></i> Open in Google Maps
+                                </button>
+                            </div>
+                            <div class="map-wrapper">
+                                <!-- Google Maps Embed -->
+                                <iframe
+                                    id="mapContainer"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.7!2d120.9427!3d13.7404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cbdd16a7bdbb%3A0x8e26c2c6b49e6f9!2sPoblacion,%20Mabini,%20Batangas!5e0!3m2!1sen!2sph!4v1!5m2!1sen!2sph"
+                                    width="100%"
+                                    height="100%"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="My Location in Mabini, Batangas"
+                                ></iframe>
+                                <div class="map-details">
+                                    <p><i class="fas fa-map-pin"></i> <strong>Location:</strong> Poblacion, Mabini, Batangas</p>
+                                    <p><i class="fas fa-water"></i> <strong>Known for:</strong> Diving spots & marine biodiversity</p>
+                                    <p><i class="fas fa-road"></i> <strong>Distance from Manila:</strong> Approximately 130km</p>
+                                    <p><i class="fas fa-globe-asia"></i> <strong>Region:</strong> CALABARZON, Philippines</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <form class="contact-form slide-right" id="contact-form">
+                            <h3>Send Me a Message</h3>
+                            <p class="form-subtitle">Interested in collaborating on a project or discussing opportunities?</p>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="name" placeholder="Your Name" required>
+                                    <div class="form-line"></div>
+                                    <div class="error-message" id="name-error"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="email" placeholder="Your Email" required>
+                                    <div class="form-line"></div>
+                                    <div class="error-message" id="email-error"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" placeholder="Subject (e.g., Project Collaboration, Internship)" required>
+                                <div class="form-line"></div>
+                                    <div class="error-message" id="subject-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" rows="5" placeholder="Your Message (Please include details about your project or opportunity)" required></textarea>
+                                <div class="form-line"></div>
+                                <div class="error-message" id="message-error"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-circle small">C</div>
+                        <div>
+                            <h3>Carl Niño Lloyd B. Magtibay</h3>
+                            <p>3rd Year IT Student & Developer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Poblacion, Mabini, Batangas</p>
+                    <p><i class="fas fa-envelope"></i> 23-40304@g.batstae-u.edu.ph</p>
+                    <p><i class="fas fa-phone"></i> +63 927 482 1298</p>
+                    <p><i class="fas fa-graduation-cap"></i> 3rd Year Information Technology - BSU</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> Carl Niño Lloyd B. Magtibay. All rights reserved. | 3rd Year Information Technology Student | Batangas State University</p>
+                <a href="#home" class="back-to-top" aria-label="Back to top">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-body">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="success-toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span class="toast-message">Message sent successfully!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
