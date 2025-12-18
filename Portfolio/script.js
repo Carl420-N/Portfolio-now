@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Responsive design for all devices",
                 "Product reviews and ratings system"
             ],
-            liveLink: "https://e-commerce-1-lac.vercel.app/",
+            liveLink: "https://e-commerce2-not-secured.vercel.app/index.html",
             githubLink: "#"
         },
         2: {
@@ -845,3 +845,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize back to top button
     window.dispatchEvent(new Event('scroll'));
 });
+
